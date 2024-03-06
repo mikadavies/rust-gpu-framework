@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::sync::Arc;
 
 use wgpu::{util::{backend_bits_from_env, dx12_shader_compiler_from_env, gles_minor_version_from_env, initialize_adapter_from_env_or_default}, Adapter, AdapterInfo, Backends, Device, DeviceDescriptor, DownlevelCapabilities, DownlevelFlags, Dx12Compiler, Features, Gles3MinorVersion, Instance, InstanceDescriptor, InstanceFlags, Limits, Queue, ShaderModel, Surface, SurfaceConfiguration, SurfaceTexture, TextureFormat, TextureView, TextureViewDescriptor};
