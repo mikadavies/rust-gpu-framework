@@ -12,14 +12,17 @@ This framework was limited to Windows, Linux and MacOS targets for simplicity. T
 
 ### Crates
 This framework relies on the crates mentioned in Cargo.toml:
-- [bytemuck]() v1.14 with the ```derive``` feature | For byte conversion
-- [log]() v0.4 | For logging
-- [pollster]() v0.3 | For blocking and running async functions
-- [rustc-hash]() v1.1 | For efficient hashing of shader related things
-- [simple_logger]() v4.3 | For logging
-- [web-time]() v1.1 | For frame-time diagnostics
-- [winit]() v0.29 | For windowed applications
-- [wgpu]() v0.19 | For communication with GPU
+
+| Crate              | Version | Features          | Usage                   |
+|--------------------|---------|-------------------|-------------------------|
+| [bytemuck]()       | 1.14    | derive            | Data to byte conversion |
+| [log]()            | 0.4     |                   | For logging             |
+| [pollster]()       | 0.3     |                   | Running async functions |
+| [rustc-hash]()     | 1.1     |                   | Fast hashing            |
+| [simple_logger]()  | 4.3     |                   | Logging                 |
+| [web-time]()       | 1.1     |                   | Frame-time diagnostics  |
+| [winit]()          | 0.29    |                   | Windowed applications   |
+| [wgpu]()           | 0.19    |                   | Communication with GPU  |
 
 ## Graphics Platform
 The supported graphics platforms are the same as those for wgpu.
@@ -27,6 +30,6 @@ The supported graphics platforms are the same as those for wgpu.
 | API    | Windows             | Linux                  | MacOS                                                          |
 |--------|---------------------|------------------------|----------------------------------------------------------------|
 | Vulkan | &#x2705;            | &#x2705;               | &#x1F5F8; ([MoltenVK](https://vulkan.lunarg.com/sdk/home#mac)) |
-| Metal  |                     |                        | &#x2705;                                                      |
+| Metal  |                     |                        | &#x2705;                                                       |
 | DX12   | &#x2705;            |                        |                                                                |
-| OpenGL | &#x1F5F8; (GL 3.3+) | &#x1F5F8; (GL ES 3.0+) | &#x1F5F8; ([ANGLE](#angle))                                     |
+| OpenGL | &#x1F5F8; (GL 3.3+) | &#x1F5F8; (GL ES 3.0+) | &#x1F5F8; ([ANGLE](#angle))                                    |
