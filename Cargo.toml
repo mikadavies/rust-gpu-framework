@@ -1,0 +1,22 @@
+[package]
+name = "rust-gpu-framework"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bytemuck = {version="1.14", features=["derive"]}
+glam = {version="0.25", features=["bytemuck","core-simd","fast-math","glam-assert"]}
+log = "0.4"
+pollster = "0.3"
+rustc-hash = "1.1"
+simple_logger = "4.3"
+web-time = "1.1"
+winit = "0.29"
+wgpu = "0.19"
+
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+panic = "abort"
+debug = true
