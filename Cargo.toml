@@ -5,7 +5,6 @@ edition = "2021"
 
 [dependencies]
 bytemuck = {version="1.14", features=["derive"]}
-glam = {version="0.25", features=["bytemuck","core-simd","fast-math","glam-assert"]}
 log = "0.4"
 pollster = "0.3"
 rustc-hash = "1.1"
