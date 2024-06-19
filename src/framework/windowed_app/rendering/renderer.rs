@@ -32,7 +32,7 @@ impl Renderer {
     fn init(
         &mut self,
         gpu_device: &GPUWrapper,
-        rendered_objects: &FxHashMap<&'static str, (u32, Box<dyn RenderedObject>)>,
+        rendered_objects: &RenderedObjectMap,
     ) {
         // Load shaders from disk
         let vertex_shader: ShaderModule = gpu_device
@@ -119,7 +119,7 @@ impl Renderer {
     pub fn render(
         &mut self,
         gpu_device: &GPUWrapper,
-        rendered_objects: &FxHashMap<&'static str, (u32, Box<dyn RenderedObject>)>,
+        rendered_objects: &RenderedObjectMap,
     ) {
         //log::info!("Starting render");
         let frame: SurfaceTexture = gpu_device.surface.get_current_texture().unwrap();
@@ -173,7 +173,7 @@ impl Renderer {
     fn update_buffers(
         &mut self,
         device: &Device,
-        rendered_objects: &FxHashMap<&'static str, (u32, Box<dyn RenderedObject>)>,
+        rendered_objects: &RenderedObjectMap,
     ) {
         rendered_objects
             .iter()
