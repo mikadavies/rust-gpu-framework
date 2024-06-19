@@ -1,6 +1,9 @@
 use std::sync::Arc;
 
-use wgpu::{Adapter, Device, DeviceDescriptor, Features, Instance, Limits, PowerPreference, PresentMode, Queue, RequestAdapterOptions, Surface, SurfaceConfiguration};
+use wgpu::{
+    Adapter, Device, DeviceDescriptor, Features, Instance, Limits, PowerPreference, PresentMode,
+    Queue, RequestAdapterOptions, Surface, SurfaceConfiguration,
+};
 use winit::{dpi::PhysicalSize, window::Window};
 
 use crate::framework::windowed_app::app::WindowedApp;

@@ -49,6 +49,5 @@ impl FrameTimer {
         } else {
             true
         }
-        
     }
 }

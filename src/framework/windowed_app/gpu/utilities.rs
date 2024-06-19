@@ -1,8 +1,14 @@
 #![allow(dead_code)]
 
 use wgpu::{
-    util::{BufferInitDescriptor, DeviceExt}, 
-    BindGroup, BindGroupDescriptor, BindGroupEntry, BindGroupLayout, BindGroupLayoutDescriptor, BindGroupLayoutEntry, BindingType, Buffer, BufferBindingType, BufferUsages, CommandEncoder, ComputePipeline, ComputePipelineDescriptor, Device, FragmentState, MultisampleState, PipelineCompilationOptions, PipelineLayout, PipelineLayoutDescriptor, PrimitiveState, RenderPass, RenderPipeline, RenderPipelineDescriptor, ShaderModule, ShaderStages, TextureView, VertexState};
+    util::{BufferInitDescriptor, DeviceExt},
+    BindGroup, BindGroupDescriptor, BindGroupEntry, BindGroupLayout, BindGroupLayoutDescriptor,
+    BindGroupLayoutEntry, BindingType, Buffer, BufferBindingType, BufferUsages, CommandEncoder,
+    ComputePipeline, ComputePipelineDescriptor, Device, FragmentState, MultisampleState,
+    PipelineCompilationOptions, PipelineLayout, PipelineLayoutDescriptor, PrimitiveState,
+    RenderPass, RenderPipeline, RenderPipelineDescriptor, ShaderModule, ShaderStages, TextureView,
+    VertexState,
+};
 
 use crate::framework::windowed_app::rendering::renderer::BufferMap;
 
@@ -96,9 +102,7 @@ pub fn create_buffer_binding_type(
     BindingType::Buffer {
         ty: match storage {
             false => BufferBindingType::Uniform,
-            true => BufferBindingType::Storage {
-                read_only,
-            },
+            true => BufferBindingType::Storage { read_only },
         },
         has_dynamic_offset,
         min_binding_size: Some(std::num::NonZeroU64::new(buffer.size()).unwrap()),
@@ -120,27 +124,15 @@ pub fn create_buffer(
     })
 }
 
-pub fn add_buffer(
-    map: &mut BufferMap,
-    buffer: Buffer,
-    binding: u32,
-    label: &'static str,
-) {
+pub fn add_buffer(map: &mut BufferMap, buffer: Buffer, binding: u32, label: &'static str) {
     map.insert(label, (binding, buffer));
 }
 
-pub fn update_buffer(
-    map: &mut BufferMap,
-    label: &str,
-    new_buffer: Buffer,
-) {
+pub fn update_buffer(map: &mut BufferMap, label: &str, new_buffer: Buffer) {
     map.get_mut(label).unwrap().1 = new_buffer;
 }
 
-pub fn get_buffer_usage(
-    map: &BufferMap,
-    label: &str,
-) -> BufferUsages {
+pub fn get_buffer_usage(map: &BufferMap, label: &str) -> BufferUsages {
     map.get(label).unwrap().1.usage()
 }
 

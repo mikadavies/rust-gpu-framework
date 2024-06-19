@@ -1,11 +1,17 @@
 use std::borrow::Cow;
 
 use rustc_hash::FxHashMap;
-use wgpu::{BindGroup, BindGroupLayout, BindGroupLayoutEntry, BindingType, Buffer, CommandEncoder, CommandEncoderDescriptor, Device, PipelineCompilationOptions, PipelineLayout, RenderPass, RenderPipeline, ShaderModule, ShaderModuleDescriptor, ShaderSource, SurfaceTexture, TextureView, TextureViewDescriptor};
+use wgpu::{
+    BindGroup, BindGroupLayout, BindGroupLayoutEntry, BindingType, Buffer, CommandEncoder,
+    CommandEncoderDescriptor, Device, PipelineCompilationOptions, PipelineLayout, RenderPass,
+    RenderPipeline, ShaderModule, ShaderModuleDescriptor, ShaderSource, SurfaceTexture,
+    TextureView, TextureViewDescriptor,
+};
 
-use crate::framework::windowed_app::{app::WindowedApp, gpu::{
-    gpu_wrapper::GPUWrapper, 
-    utilities::*}};
+use crate::framework::windowed_app::{
+    app::WindowedApp,
+    gpu::{gpu_wrapper::GPUWrapper, utilities::*},
+};
 
 pub type BufferMap = FxHashMap<&'static str, (u32, Buffer)>;
 pub type BindGroupMap = FxHashMap<&'static str, (u32, BindGroup)>;
@@ -29,31 +35,29 @@ impl Renderer {
         Default::default()
     }
 
-    fn init(
-        &mut self,
-        gpu_device: &GPUWrapper,
-        rendered_objects: &RenderedObjectMap,
-    ) {
+    fn init(&mut self, gpu_device: &GPUWrapper, rendered_objects: &RenderedObjectMap) {
         // Load shaders from disk
-        let vertex_shader: ShaderModule = gpu_device
-            .device
-            .create_shader_module(ShaderModuleDescriptor {
-                label: Some("vertex_shader"),
-                source: ShaderSource::Wgsl(Cow::Borrowed(include_str!(
-                    // PATH_TO_VERTEX_SHADER 
-                    "../shaders/vertex.wgsl"
-                ))),
-            });
-        let fragment_shader: ShaderModule = gpu_device
-            .device
-            .create_shader_module(ShaderModuleDescriptor {
-                label: Some("fragment_shader"),
-                source: ShaderSource::Wgsl(Cow::Borrowed(include_str!(
-                    // PATH_TO_FRAGMENT_SHADER
-                    "../shaders/fragment.wgsl"
-                ))),
-            });
-        
+        let vertex_shader: ShaderModule =
+            gpu_device
+                .device
+                .create_shader_module(ShaderModuleDescriptor {
+                    label: Some("vertex_shader"),
+                    source: ShaderSource::Wgsl(Cow::Borrowed(include_str!(
+                        // PATH_TO_VERTEX_SHADER
+                        "../shaders/vertex.wgsl"
+                    ))),
+                });
+        let fragment_shader: ShaderModule =
+            gpu_device
+                .device
+                .create_shader_module(ShaderModuleDescriptor {
+                    label: Some("fragment_shader"),
+                    source: ShaderSource::Wgsl(Cow::Borrowed(include_str!(
+                        // PATH_TO_FRAGMENT_SHADER
+                        "../shaders/fragment.wgsl"
+                    ))),
+                });
+
         // Initialise layout entry vec
         let mut layout_entries: Vec<BindGroupLayoutEntry> = Vec::new();
 
@@ -116,11 +120,7 @@ impl Renderer {
         self.pipeline_layout = Some(render_pipeline_layout);
     }
 
-    pub fn render(
-        &mut self,
-        gpu_device: &GPUWrapper,
-        rendered_objects: &RenderedObjectMap,
-    ) {
+    pub fn render(&mut self, gpu_device: &GPUWrapper, rendered_objects: &RenderedObjectMap) {
         //log::info!("Starting render");
         let frame: SurfaceTexture = gpu_device.surface.get_current_texture().unwrap();
         let view: TextureView = frame.texture.create_view(&TextureViewDescriptor {
@@ -170,11 +170,7 @@ impl Renderer {
         frame.present();
     }
 
-    fn update_buffers(
-        &mut self,
-        device: &Device,
-        rendered_objects: &RenderedObjectMap,
-    ) {
+    fn update_buffers(&mut self, device: &Device, rendered_objects: &RenderedObjectMap) {
         rendered_objects
             .iter()
             .for_each(|(label, (_binding, object))| {

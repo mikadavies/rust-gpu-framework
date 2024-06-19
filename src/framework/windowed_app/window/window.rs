@@ -15,7 +15,7 @@ impl WindowedApp {
         self.window = Some(window.clone());
         log::debug!("Created window successfully");
     }
-    
+
     pub fn redraw_window(&mut self) {
         // Update general components
         self.frametimer.update();

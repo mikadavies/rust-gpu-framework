@@ -1,5 +1,3 @@
-
-
 use framework::windowed_app::app::WindowedApp;
 
 mod framework;
@@ -12,8 +10,8 @@ fn main() {
         AppType::Windowed => {
             let mut app: WindowedApp = WindowedApp::new("Window");
             app.run();
-        },
-        AppType::Windowless => ()
+        }
+        AppType::Windowless => (),
     }
 }
 

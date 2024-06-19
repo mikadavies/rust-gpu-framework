@@ -1,4 +1,7 @@
-use winit::{application::ApplicationHandler, event::WindowEvent, event_loop::ActiveEventLoop, window::WindowId};
+use winit::{
+    application::ApplicationHandler, event::WindowEvent, event_loop::ActiveEventLoop,
+    window::WindowId,
+};
 
 use crate::framework::windowed_app::app::WindowedApp;
 

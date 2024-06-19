@@ -1,14 +1,14 @@
 use std::sync::Arc;
 
 use winit::{
-    event_loop::{ControlFlow, EventLoop}, 
-    window::{Window, WindowAttributes}
+    event_loop::{ControlFlow, EventLoop},
+    window::{Window, WindowAttributes},
 };
 
 use super::{
-    gpu::gpu_wrapper::GPUWrapper, 
-    rendering::renderer::{RenderedObjectMap, Renderer}, 
-    timers::frame_timer::FrameTimer
+    gpu::gpu_wrapper::GPUWrapper,
+    rendering::renderer::{RenderedObjectMap, Renderer},
+    timers::frame_timer::FrameTimer,
 };
 
 #[derive(Default)]
@@ -56,4 +56,3 @@ impl WindowedApp {
             .unwrap_or_else(|err| log::error!("Event loop error: {err:?}"));
     }
 }
-
