@@ -1,3 +1,3 @@
 mod event_manager;
-mod window;
+mod window_actions;
 mod winit;
