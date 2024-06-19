@@ -4,18 +4,38 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-bytemuck = {version="1.14", features=["derive"]}
-log = "0.4"
-pollster = "0.3"
-rustc-hash = "1.1"
-simple_logger = "4.3"
-web-time = "1.1"
-winit = "0.29"
-wgpu = "0.19"
 
+# -----------------
+
+# GPU related dependencies
+wgpu = {version="0.20"} # Communication with GPU
+bytemuck = {version="1.16", features=["derive"]} # Data to byte conversions
+
+# Rendering
+winit = {version="0.30"} # Window and event handling
+web-time = {version="1.1"} # Frame-time diagnostics
+
+# Logging
+log = {version="0.4"} # Basic logging features
+simple_logger = {version="5.0"} # Lightweight logger
+
+# Concurrent programming utilities
+pollster = {version="0.3"} # Async blocking
+
+# Other utilities
+rustc-hash = {version="2.0"} # Fast hashing
+glam = {version="0.28", features=["approx","bytemuck","fast-math","core-simd"]} # Linear algebra
+
+#------------------------
 
 [profile.release]
 codegen-units = 1
 lto = "fat"
+panic = "abort"
+debug = true
+
+[profile.dev]
+codegen-units = 8
+lto = "off"
 panic = "abort"
 debug = true

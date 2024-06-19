@@ -1,35 +1,8 @@
 # Rust GPU Framework
-A basic framework for general programming with the GPU in Rust. For simplicity, the framework is targeted at Windows, Linux and MacOS.
+A basic framework for general programming with the GPU in Rust. For simplicity, the framework is targeted at Windows and Linux.
 
 ## Structure
-The frameworks folder contains most of the framework for interacting with the GPU through [wgpu](https://wgpu.rs/). The ```frameworks::windowed``` library is pretty much a decluttered clone of the framework used for the [wgpu examples](https://github.com/gfx-rs/wgpu/tree/trunk/examples) with added type annotations, and is intended for use in graphical applications. 
 
-The ```frameworks::windowless``` is also based off the wgpu examples, and is primarily for GPU computation.
+The [framework](./src/framework/) folder contains most of the framework for interacting with the GPU through wgpu. The [windowed_app](./src/framework/windowed_app/) folder provides a basic framework to create windowed apps rendering through the GPU.
 
-## Requirements
-### OS
-This framework was limited to Windows, Linux and MacOS targets for simplicity. The config.toml file attempts to use the mold linker on Linux and the lld linker on Windows.
-
-### Crates
-This framework relies on the crates mentioned in Cargo.toml:
-
-| Crate              | Version | Features          | Usage                   |
-|--------------------|---------|-------------------|-------------------------|
-| [bytemuck]()       | 1.14    | derive            | Data to byte conversion |
-| [log]()            | 0.4     |                   | For logging             |
-| [pollster]()       | 0.3     |                   | Running async functions |
-| [rustc-hash]()     | 1.1     |                   | Fast hashing            |
-| [simple_logger]()  | 4.3     |                   | Logging                 |
-| [web-time]()       | 1.1     |                   | Frame-time diagnostics  |
-| [winit]()          | 0.29    |                   | Windowed applications   |
-| [wgpu]()           | 0.19    |                   | Communication with GPU  |
-
-## Graphics Platform
-The supported graphics platforms are the same as those for wgpu.
-
-| API    | Windows             | Linux                  | MacOS                                                          |
-|--------|---------------------|------------------------|----------------------------------------------------------------|
-| Vulkan | &#x2705;            | &#x2705;               | &#x1F5F8; ([MoltenVK](https://vulkan.lunarg.com/sdk/home#mac)) |
-| Metal  |                     |                        | &#x2705;                                                       |
-| DX12   | &#x2705;            |                        |                                                                |
-| OpenGL | &#x1F5F8; (GL 3.3+) | &#x1F5F8; (GL ES 3.0+) | &#x1F5F8; ([ANGLE](#angle))                                    |
+This framework is currently still a work in progress and is subject to change. It currently only supports windowed applications, but a GPGPU computing framework will be added soon. 
