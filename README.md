@@ -1,3 +1,6 @@
+[!WARNING]
+This project has not been worked on since June 2024, and is written quite badly. It is currently on pause indefinitely due to the clunkiness of wgpu.
+
 # Rust GPU Framework
 A basic framework for general programming with the GPU in Rust. For simplicity, the framework is targeted at Windows and Linux.
 
